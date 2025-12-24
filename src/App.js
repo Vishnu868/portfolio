@@ -20,6 +20,29 @@ export default function Portfolio() {
     "obstacle-avoiding-robot",
     "ecommerce-website",
   ];
+  const SkillCard = ({ title, items }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+    className="rounded-xl border border-gray-800 bg-[#0f1624] p-6 hover:border-blue-500/40 transition"
+  >
+    <h3 className="text-lg font-semibold text-blue-300 mb-4">
+      {title}
+    </h3>
+
+    <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
+      {items.map((item, idx) => (
+        <li key={idx} className="flex items-start gap-2">
+          <span className="mt-[6px] h-1.5 w-1.5 rounded-full bg-blue-400" />
+          {item}
+        </li>
+      ))}
+    </ul>
+  </motion.div>
+);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -169,7 +192,6 @@ export default function Portfolio() {
 
 
 {/* HERO */}
-{/* HERO */}
 <section
   id="home"
   className="min-h-screen flex items-center justify-center px-6 pt-16 relative overflow-hidden"
@@ -253,7 +275,7 @@ export default function Portfolio() {
       transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
       className="text-xl text-gray-300 mb-2"
     >
-      AI & Machine Learning Engineer | Computer Vision & Applied AI
+      Interested in Applied AI & Intelligent Systems
     </motion.p>
 
     {/* Focus Line */}
@@ -263,7 +285,7 @@ export default function Portfolio() {
       transition={{ duration: 0.8, delay: 0.3 }}
       className="text-gray-400 mb-8"
     >
-      Computer Vision • Deep Learning • Intelligent Systems • IoT-AI Integration
+    Deep Learning • Intelligent Systems • IoT-AI Integration
     </motion.p>
 
     {/* Description */}
@@ -273,7 +295,7 @@ export default function Portfolio() {
       transition={{ duration: 0.8, delay: 0.45 }}
       className="max-w-2xl mx-auto text-lg text-gray-300 mb-10 leading-relaxed"
     >
-      Designing and deploying applied AI systems with a focus on computer vision,
+      Designing and deploying applied AI systems,
       multimodal learning, and real-world intelligent applications across web,
       robotics, and IoT domains.
     </motion.p>
@@ -507,65 +529,117 @@ export default function Portfolio() {
   </div>
 </section>
 {/* SKILLS */}
-<section id="skills" className="py-24 px-6 bg-[#111827]">
+{/* SKILLS */}
+<section id="skills" className="py-24 px-6 bg-[#0b0f14]">
   <div className="max-w-6xl mx-auto">
 
-    <div className="flex flex-col md:flex-row gap-12">
+    {/* Section Heading */}
+    <motion.h2
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="text-3xl font-bold mb-12 text-blue-400"
+    >
+      Skills
+    </motion.h2>
 
-      {/* LEFT: Heading */}
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className="text-3xl font-bold text-blue-400 md:w-48 shrink-0"
-      >
-        Skills
-      </motion.h2>
+    {/* Skills Grid */}
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
 
-      {/* RIGHT: Skills content */}
-      <div className="space-y-8">
+      {/* Programming Languages */}
+      <SkillCard
+        title="Programming Languages"
+        items={["Python", "C", "C++", "SQL", "JavaScript"]}
+      />
 
-        <div>
-          <h3 className="text-lg font-semibold text-blue-300 mb-2">
-            Core
-          </h3>
-          <p className="text-gray-300 leading-relaxed">
-            Python, C++, Machine Learning, Deep Learning, Data Structures & Algorithms
-          </p>
-        </div>
+      {/* Computer Vision */}
+      <SkillCard
+        title="Computer Vision"
+        items={[
+          "OpenCV",
+          "Image Classification",
+          "Object Detection",
+          "Image Segmentation",
+          "Video Processing",
+        ]}
+      />
 
-        <div>
-          <h3 className="text-lg font-semibold text-blue-300 mb-2">
-            Frameworks & Tools
-          </h3>
-          <p className="text-gray-300 leading-relaxed">
-            React, Node.js, PyTorch, TensorFlow, Flask, OpenCV, Scikit-learn
-          </p>
-        </div>
+      {/* AI Frameworks & Libraries */}
+      <SkillCard
+        title="AI Frameworks & Libraries"
+        items={[
+          "TensorFlow",
+          "Keras",
+          "PyTorch",
+          "Scikit-learn",
+          "NumPy, Pandas",
+          "Matplotlib, Seaborn",
+          "MediaPipe",
+        ]}
+      />
 
-        <div>
-          <h3 className="text-lg font-semibold text-blue-300 mb-2">
-            Specializations
-          </h3>
-          <p className="text-gray-300 leading-relaxed">
-            IoT-based AI Systems, Model Deployment, Predictive Analytics, Robotics
-          </p>
-        </div>
+      {/* Robotics & IoT */}
+      <SkillCard
+        title="Robotics & IoT"
+        items={[
+          "Arduino",
+          "ESP32 / ESP8266",
+          "Sensors & Actuators",
+          "Embedded Systems",
+          "Hardware–Software Integration",
+        ]}
+      />
 
-        <div>
-          <h3 className="text-lg font-semibold text-blue-300 mb-2">
-            Additional
-          </h3>
-          <p className="text-gray-300 leading-relaxed">
-            UI/UX Design, Project Management
-          </p>
-        </div>
+      {/* Web Development */}
+      <SkillCard
+        title="Web Development"
+        items={[
+          "HTML, CSS, JavaScript",
+          "React.js",
+          "Tailwind CSS",
+          "Responsive Design",
+        ]}
+      />
 
-      </div>
+      {/* Backend & APIs */}
+      <SkillCard
+        title="Backend & APIs"
+        items={[
+          "Node.js",
+          "Express.js",
+          "Flask",
+          "RESTful APIs",
+        ]}
+      />
+
+      {/* Databases & Cloud */}
+      <SkillCard
+        title="Databases & Cloud"
+        items={[
+          "MySQL",
+          "MongoDB",
+          "Firebase",
+          "Cloudinary",
+          "Deployment & Hosting",
+        ]}
+      />
+
+      {/* Tools & Platforms */}
+      <SkillCard
+        title="Tools & Platforms"
+        items={[
+          "Git & GitHub",
+          "VS Code",
+          "Jupyter Notebook",
+          "Google Colab",
+          "Linux",
+        ]}
+      />
     </div>
   </div>
 </section>
+
 {/* EDUCATION */}
 <section id="education" className="py-24 px-6 ">
   <div className="max-w-6xl mx-auto">
